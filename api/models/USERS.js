@@ -36,10 +36,8 @@ module.exports = {
     	model: 'SEDES'
     },
   	toJSON: function() {
-      	var obj = this.toObject();
-      	if(typeof obj.SEDE != "undefined") { obj.SEDE = obj.SEDE.NOMBRE_SEDE; }
-      	if(typeof obj.AREA != "undefined") { obj.AREA = obj.AREA.NOMBRE_AREA; }
-	    return obj;
+      var obj = this.toObject();
+	  return obj;
     }
   },
   autoPK: false,
