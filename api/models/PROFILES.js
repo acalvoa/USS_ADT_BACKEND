@@ -13,13 +13,14 @@ module.exports = {
 	  		primaryKey: true,
 	  		autoIncrement: true
 	  	},
-  		RUT: 'string',
-  		LOCATION: 'string',
-  		USER: {
-  			model: 'USERS'
+  		NAME: 'string',
+  		PERMISION: 'string',
+      USER: {
+  			collection: 'USERS',
+        via: 'PROFILES'
   		}
   	},
   	autoPK: false,
-    tableName: 'PROFILE'
+    tableName: 'PERFIL'
 };
 

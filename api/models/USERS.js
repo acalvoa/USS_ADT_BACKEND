@@ -22,8 +22,7 @@ module.exports = {
   		unique: true
   	},
   	PROFILES:{
-  		collection: 'PROFILES',
-      	via: 'USER'
+  		model: 'PROFILES'
   	},
     ROLE:{
       	model: 'ROLES',
@@ -37,7 +36,7 @@ module.exports = {
     },
   	toJSON: function() {
       var obj = this.toObject();
-	  return obj;
+	    return obj;
     }
   },
   autoPK: false,

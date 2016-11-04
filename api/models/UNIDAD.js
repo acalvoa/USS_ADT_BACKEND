@@ -6,9 +6,19 @@
  */
 
 module.exports = {
-
-  attributes: {
-
-  }
+	attributes: {
+  		ID_UNIDAD:{
+	  		type: 'integer',
+	  		primaryKey: true,
+	  		autoIncrement: true
+	  	},
+	  	NOMBRE:'string',
+	  	ROOT: 'boolean',
+	  	AREA:{
+	  		model: 'AREA'
+	  	}
+  	},
+  	autoPK: false,
+  	tableName: 'UNIDADES'
 };
 

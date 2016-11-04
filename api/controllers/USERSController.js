@@ -13,7 +13,7 @@ module.exports = {
 		USERS.findOne({
 			EMAIL: username
 		})
-		.populate('ROLE')
+		.populateAll()
 		.exec(function(err, user) {
 			//VERIFICAMOS SI HAY ERROR
 			if(err){ 
@@ -37,12 +37,12 @@ module.exports = {
 						CODE:'PASSWORDINVALID'
 					});
                 }
-                if(!user.ROLE.SUPERUSER){
-                	return res.json({
-						RESPONSE:403,
-						CODE:'NOTPERMISION'
-					});
-                }
+     //            if(!user.ROLE.SUPERUSER){
+     //            	return res.json({
+					// 	RESPONSE:403,
+					// 	CODE:'NOTPERMISION'
+					// });
+     //            }
                 req.session.admin = true;
             	req.session.authenticated = true;
             	req.session.user = user;
@@ -59,7 +59,7 @@ module.exports = {
 		USERS.findOne({
 			EMAIL: username
 		})
-		.populate('ROLE')
+		.populateAll()
 		.exec(function(err, user) {
 			//VERIFICAMOS SI HAY ERROR
 			if(err){ 
@@ -117,8 +117,51 @@ module.exports = {
     		RESPONSE: 200
     	});
 	},
-	register: function(req,res){
+	// register: function(req,res){
 
+	// },
+	getSubordinados: function(req,res){
+		
+	},
+	create: function(req,res){
+		var data = req.params.all();
+		UNIDAD.findOne({
+			AREA: data.AREA,
+			ROOT: true
+		}).exec(function(err,unidad){
+			USERS.create(data).exec(function(err,user){
+				ASIGNACION_UNIDAD.create({
+					USUARIO: user.ID_USER,
+					UNIDAD: unidad.ID_UNIDAD
+				}).exec(function(err,asignacion){
+					return res.json(user);
+				})
+			});
+		});
+	},
+	update: function(req,res){
+		var id = req.param('id');
+		var data = req.params.all();
+		UNIDAD.findOne({
+			AREA: data.AREA,
+			ROOT: true
+		}).exec(function(err,unidad){
+			USERS.update({
+				ID_USER: id
+			}, data, function(err,user){
+				ASIGNACION_UNIDAD.update({
+					USUARIO: id 
+				},{
+					UNIDAD: unidad.ID_UNIDAD
+				}, function(err2,asign){
+					USERS.findOne({
+						ID_USER: id
+					}).populateAll().exec(function(err,user){
+						return res.json(user);
+					});
+				})
+			});
+		});	
 	}
 };
 
