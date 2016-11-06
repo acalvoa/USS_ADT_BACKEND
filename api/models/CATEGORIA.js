@@ -7,8 +7,29 @@
 
 module.exports = {
 
-  attributes: {
-
-  }
+  	attributes: {
+  		ID_CATEGORIA:{
+	  		type: 'integer',
+	  		primaryKey: true,
+	  		autoIncrement: true
+	  	},
+	  	NOMBRE: 'string',
+	  	DESCRIPCION: 'string',
+	  	COLOR: 'string',
+	  	TEXTO: 'string',
+	  	ROOT: {
+	  		type: 'boolean',
+	  		defaultsTo: false
+	  	},
+	  	AREA: {
+	  		model: 'AREA'
+	  	},
+	  	TAREAS:{
+	  		collection: 'TAREAS',
+      		via: 'CATEGORIA'
+	  	}
+  	},
+  	autoPK: false,
+  	tableName: 'CATEGORIAS'
 };
 

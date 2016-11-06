@@ -7,8 +7,21 @@
 
 module.exports = {
 
-  attributes: {
-
-  }
+	attributes: {
+	  	ID_TASKLIST:{
+	  		type: 'integer',
+	  		primaryKey: true,
+	  		autoIncrement: true
+	  	},
+	  	DESCRIPCION: 'string',
+	  	ACTIVIDAD: {
+	  		model: 'ACTIVIDADES'
+	  	},
+	  	LUGAR:{
+	  		model: 'LUGAR'
+	  	}
+	},
+  	autoPK: false,
+  	tableName: 'TASKLIST'
 };
 

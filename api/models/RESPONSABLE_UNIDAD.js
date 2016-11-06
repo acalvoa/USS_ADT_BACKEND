@@ -7,8 +7,20 @@
 
 module.exports = {
 
-  attributes: {
-
-  }
+	attributes: {
+  		ID_RESPONSABLE:{
+	  		type: 'integer',
+	  		primaryKey: true,
+	  		autoIncrement: true
+	  	},
+	  	USUARIO: {
+	  		model: 'USERS',
+	  	},
+	  	UNIDAD: {
+	  		model: 'UNIDAD'
+	  	}
+  	},
+  	autoPK: false,
+  	tableName: 'RESPONSABLE_UNIDAD'
 };
 

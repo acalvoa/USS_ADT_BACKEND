@@ -7,8 +7,21 @@
 
 module.exports = {
 
-  attributes: {
-
-  }
+  	attributes: {
+  		ID_ASIGNACION:{
+	  		type: 'integer',
+	  		primaryKey: true,
+	  		autoIncrement: true
+	  	},
+	  	USUARIO: {
+	  		model: 'USERS',
+	  		unique: true
+	  	},
+	  	UNIDAD: {
+	  		model: 'UNIDAD'
+	  	}
+  	},
+  	autoPK: false,
+  	tableName: 'ASIGNACION_UNIDAD'
 };
 
