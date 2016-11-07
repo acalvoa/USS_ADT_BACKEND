@@ -16,7 +16,9 @@ module.exports = {
 	  	NOMBRE: 'string',
 	  	DESCRIPCION: 'string',
 	  	CATEGORIA: {
-	  		model: 'CATEGORIA'
+	  		collection: 'CATEGORIA',
+      		via: 'TAREAS',
+      		dominant: true
 	  	},
 	  	UNIDAD: {
 	  		model: 'UNIDAD'
@@ -24,8 +26,7 @@ module.exports = {
 	  	ACTIVIDADES: {
 	  		collection: 'ACTIVIDADES',
 	  		via: 'TAREA'
-	  	},
-	  	FRECUENCIA: 'number'
+	  	}
 	  },
 	  autoPK: false,
 	  tableName: 'TAREAS',

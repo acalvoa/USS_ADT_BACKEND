@@ -36,6 +36,7 @@ module.exports.routes = {
     view: 'homepage'
   },
   'POST /login/admin':'USERSController.loginAdmin',
+  'PUT /tareas/editAdmin':'TAREASController.editAdmin',
   'GET /migrate':'MIGRATEController.migrate'
   /***************************************************************************
   *                                                                          *
