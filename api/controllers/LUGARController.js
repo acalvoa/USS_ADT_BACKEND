@@ -23,6 +23,16 @@ module.exports = {
 				res.json(sedes);
 			});
 		}
+	},
+	create: function(req,res){
+		LUGAR.create({
+			INVENTARIO: (req.param('INVENTARIO'))?JSON.parse(req.param('INVENTARIO')):[],
+			NOMBRE_LUGAR: req.param('NOMBRE_LUGAR'),
+			SEDE: req.param('SEDE')
+		}).exec(function(err,lugar){
+			if(err) return res.serverError(err);
+			return res.json(lugar);
+		})
 	}
 };
 
